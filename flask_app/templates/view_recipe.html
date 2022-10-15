@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Recipe</title> <!--change when you're doing Jinja-->
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<!-- This was interinging in the sense that I was grabbing a "signle many" meaning I was displaying all of the recipes. Just one of them and also wanted to display info regarding the one associated  with it -->
+<body>
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h1 class="m-3">Hola {{ this_user.first_name }}</h1>
+        </div>
+        <nav class="mx-5">
+            <div>
+                <a class="mx-3" href="/logout">Logout</a>
+                <a href="/recipes/new">Create+</a>
+        </nav>
+    </div>
+    <div style="width:50%;" class="mx-auto d-flex justify-content-around">
+        <div>
+            <h2>{{ this_recipe.name }}</h2>
+        </div>
+        <div>
+            <h3>Posted by: {{ this_recipe.user.first_name }}</h3>
+        </div>
+    </div> 
+    <!-- This layout allowed me to display a simple box and have categories parallel with pulled data -->
+    <div style="width:50%;" class=" container mx-auto p-3 border">
+        <div class="flex-container d-flex">
+            <p>Description:</p>
+            <p class="majority-width mx-5">{{this_recipe.description}}</p>
+        </div>
+        <div class="flex-container d-flex">
+            <p>Under 30?:</p>
+            <p class="majority-width mx-5">{{this_recipe.under_30}}</p>
+        </div>
+        <div class="flex-container d-flex">
+            <p>Instructions:</p>
+            <p class="majority-width mx-5">{{this_recipe.instructions}}</p>
+        </div>
+        <div class="flex-container d-flex">
+            <p>Date Made:</p>
+            <p class="majority-width mx-5">{{this_recipe.made.strftime("%B, %dth, %Y")}}</p>
+        </div>
+    </div>
+
+</body>
+<!-- <table>
+    <thead>
+        <tr>
+            <th>Description:</th>
+            <td>{{ this_recipe.description }}</td>
+        </tr>
+        <tr>
+            <th>Under 30?:</th>
+        </tr>
+        <tr>
+            <th>Instructions:</th>
+        </tr>
+        <tr>
+            <th>Date:</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ this_recipe.description }}</td>
+        </tr>
+        <tr>
+            <td>{{ this_recipe.under_30 }}</td>
+        </tr>
+        <tr>
+            <td>{{ this_recipe.instructions }}</td>
+        </tr>
+        <tr>
+            <td>{{ this_recipe.made.strftime("%B, %dth, %Y") }}</td>
+        </tr>
+    </tbody>
+</table> -->
+</html>

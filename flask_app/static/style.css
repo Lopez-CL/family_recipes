@@ -1,0 +1,22 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    width: 100%;
+}
+header{
+    margin-left: 2% !important;
+}
+/* .row {
+    display: flex;
+    justify-content: center;
+    min-height: 20px;
+}
+
+.checker {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+} */

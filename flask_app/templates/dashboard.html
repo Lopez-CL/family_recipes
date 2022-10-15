@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes Dashboard</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+<!-- Great to grab if wireframe has basic heading and nav links to the side. Also note I have pulled to variables from the rendeer_template function, this_user, which holds the grabd user by id function with data from session(ed) user and all_recipes through show function.This is how I can pass information into routes!!! -->
+    <h1 class="m-3">Hola {{ this_user.first_name }}!</h1>
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h2 class="m-2">All Posted Recipes</h2>
+        </div>
+        <nav class="mx-5">
+            <div>
+                <a class="mx-3" href="/logout">Logout</a>
+                <a href="/recipes/new">Create+</a>
+        </nav>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Under 30?</th>
+                <th>Posted By</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for this_recipe in all_recipes %}
+            <tr>
+                <td>{{ this_recipe.name }}</td>
+                <td>{{ this_recipe.under_30 }}</td>
+                <td>{{ this_recipe.user.first_name }}</td>
+                <!-- used this conditional logic to display different links based on user signed in. Might be useful in exam. -->
+                    {% if this_user.id == this_recipe.user.id %}
+                        <td><a href="/recipes/{{ this_recipe.id }}">View</a> | <a href="/recipes/edit/{{ this_recipe.id }}">Edit</a> | <a href="/recipes/delete/{{ this_recipe.id }}">Delete</a></td>
+                    {% else %}
+                        <td><a href="/recipes/{{ this_recipe.id }}">View</a></td>
+                    {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+
+</html>
