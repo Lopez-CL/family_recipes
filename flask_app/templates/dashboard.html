@@ -16,10 +16,10 @@
 
 <body>
 <!-- Great to grab if wireframe has basic heading and nav links to the side. Also note I have pulled to variables from the rendeer_template function, this_user, which holds the grabd user by id function with data from session(ed) user and all_recipes through show function.This is how I can pass information into routes!!! -->
-    <h1 class="m-3">Hola {{ this_user.first_name }}!</h1>
+    <h1 class="m-3">Hola, {{ this_user.first_name }}!</h1>
     <div class="d-flex justify-content-between align-items-center">
         <div>
-            <h2 class="m-2">All Posted Recipes</h2>
+            <h2 class="m-2">Everyone's Fav Recipes</h2>
         </div>
         <nav class="mx-5">
             <div>
