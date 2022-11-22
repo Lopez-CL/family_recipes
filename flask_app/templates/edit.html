@@ -50,11 +50,18 @@
                     <label for="date">Date Cooked/Made:</label><br>
                     <input type="date" name="made" id="date" value="{{ this_recipe.made }}"><br><br>
                     <p>Under 30 minutes?</p>
-                    <input type="radio" name="under_30" id="yes" value="yes">
-                    <label for="yes">Yes</label>
-                    <input type="radio" name="under_30" id="no" value="no">
-                    <label for="no">No</label><br><br>
-                    <input type="submit" value="Register">
+                    {% if this_recipe.under_30 == "yes" %}
+                        <input type="radio" name="under_30" id="yes" value="yes" checked>
+                        <label for="yes">Yes</label>
+                        <input type="radio" name="under_30" id="no" value="no">
+                        <label for="no">No</label><br><br>
+                    {% else %}
+                        <input type="radio" name="under_30" id="yes" value="yes">
+                        <label for="yes">Yes</label>
+                        <input type="radio" name="under_30" id="no" value="no" checked>
+                        <label for="no">No</label><br><br>
+                    {% endif %}
+                    <input type="submit" value="Edit your Recipe">
                 </div>
             </form>
 </body>
